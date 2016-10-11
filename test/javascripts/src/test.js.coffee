@@ -17,8 +17,7 @@
   el
 
 @setText = (el, text) ->
-  textProperty = if "textContent" of el then "textContent" else "innerText"
-  el[textProperty] = text
+  el.textContent = text
 
 @getText = (el) ->
   # innerHTML works in all browsers so using it ensures we're
@@ -30,5 +29,5 @@
   event.initEvent name, true, true
   el.dispatchEvent event
 
-@run = ->
-  triggerEvent "time:elapse"
+@defer = (callback) ->
+  setTimeout(callback, 1)
